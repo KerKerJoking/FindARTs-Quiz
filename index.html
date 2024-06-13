@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>畫冊心理測驗</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>畫冊心理測驗</h1>
+    <form id="quizForm">
+        <p>第一題: 你喜歡什麼顏色？</p>
+        <input type="radio" id="color1" name="question1" value="red">
+        <label for="color1">紅色</label><br>
+        <input type="radio" id="color2" name="question1" value="blue">
+        <label for="color2">藍色</label><br>
+        <input type="radio" id="color3" name="question1" value="green">
+        <label for="color3">綠色</label><br><br>
+
+        <p>第二題: 你喜歡什麼動物？</p>
+        <input type="radio" id="animal1" name="question2" value="cat">
+        <label for="animal1">貓</label><br>
+        <input type="radio" id="animal2" name="question2" value="dog">
+        <label for="animal2">狗</label><br>
+        <input type="radio" id="animal3" name="question2" value="bird">
+        <label for="animal3">鳥</label><br><br>
+
+        <p>第三題: 你喜歡什麼季節？</p>
+        <input type="radio" id="season1" name="question3" value="spring">
+        <label for="season1">春天</label><br>
+        <input type="radio" id="season2" name="question3" value="summer">
+        <label for="season2">夏天</label><br>
+        <input type="radio" id="season3" name="question3" value="winter">
+        <label for="season3">冬天</label><br><br>
+
+        <button type="button" onclick="submitQuiz()">送出</button>
+    </form>
+
+    <script>
+        function submitQuiz() {
+            const question1 = document.querySelector('input[name="question1"]:checked');
+            const question2 = document.querySelector('input[name="question2"]:checked');
+            const question3 = document.querySelector('input[name="question3"]:checked');
+
+            if (!question1 || !question2 || !question3) {
+                alert('請回答所有問題。');
+                return;
+            }
+
+            const redirectMap = {
+                'red-cat-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'red-cat-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'red-cat-winter': 'https://findarts.net/intro/gallery/s9_17s_rdl001.html',
+                'red-dog-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'red-dog-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'red-dog-winter': 'https://findarts.net/intro/gallery/s9_17s_rdl001.html',
+                'blue-cat-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'blue-cat-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'blue-cat-winter': 'https://findarts.net/intro/gallery/s9_17s_rdl001.html',
+                'blue-dog-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'blue-dog-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'blue-dog-winter': 'https://findarts.net/intro/gallery/s9_17s_rdl001.html',
+                'blue-bird-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'blue-bird-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'blue-bird-winter': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'green-cat-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'green-cat-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'green-cat-winter': 'https://findarts.net/intro/gallery/s9_17s_rdl001.html',
+                'green-dog-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'green-dog-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'green-dog-winter': 'https://findarts.net/intro/gallery/s9_17s_rdl001.html',
+                'green-bird-spring': 'https://findarts.net/intro/gallery/s9_17s_shf001.html',
+                'green-bird-summer': 'https://findarts.net/intro/gallery/s9_17s_hmc001.html',
+                'green-bird-winter': 'https://findarts.net/intro/gallery/s9_17s_shf001.html'
+            };
+
+            const key = `${question1.value}-${question2.value}-${question3.value}`;
+            const redirectUrl = redirectMap[key] || 'https://findarts.net/intro/index.html';
+            window.location.href = redirectUrl;
+        }
+    </script>
+</body>
+</html>
